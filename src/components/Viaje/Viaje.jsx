@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import db from '../../services'
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
 import Footer from '../Footer/Footer.jsx';
 import Facebook from '../../img/facebook.svg';
 import Instagram from '../../img/instagram.svg';
@@ -13,6 +12,51 @@ const Viaje = () => {
     const [viajes, setViajes] = useState([]);
     const params = useParams();
     const viaje = params ? viajes.filter((item) => item.id === params.id) : viajes
+
+    const [form, setForm] = useState(false);
+
+    function aparecerForm (valor) {
+      if (valor){
+        setForm(false);
+      }else{
+        setForm(true);
+      }
+    }
+
+    const [formulario, setFormulario] = useState({
+      email: "",
+      nombre: "",
+      apellido: "",
+      telefono: "",
+      reservas: "",
+      viajeForm: ""
+    });
+  
+    const {email, nombre, apellido, telefono, reservas, viajeForm } = formulario;
+  
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormulario({
+        reservas: {
+          ...formulario.reservas,
+          [name]: value
+        }
+      });
+    }
+  
+    const setInFireBase = async (reservas) => {
+      if (reservas.email != "" && reservas.nombre != "" && reservas.apellido != "" && reservas.telefono != "" && reservas.consulta != "") {
+        try {
+          const data = collection(db, "reservas");
+          const col = await addDoc(data, reservas);
+          alert("Su numero de orden es: " + col.id)
+        } catch (error) {
+          console.log(error)
+        }
+      }else{
+        alert("Complete todos los campos para poder realizar la reserva")
+      }
+    }
 
     useEffect(() => {
 
@@ -75,11 +119,25 @@ const Viaje = () => {
                   <p>Dinero en efectivo</p>
                   <p>Debito</p>
                   <p>Credito</p>
-                  <button>CONSULTAR RESERVA</button>
+                  <button onClick={() => aparecerForm(form)}>CONSULTAR RESERVA</button>
                 </div>
               </div>
           </div>
         ))}
+        {form == true && <div className='containerFormViaje'>
+          <div className='containerdatosConsulta'>
+              <div className='consulta'>
+                  <input type="text" name="nombre" className='inputConsultaText' placeholder='Nombre' onChange={handleChange}/>
+                  <input type="text" name="apellido" className='inputConsultaText' placeholder='Apellido' onChange={handleChange}/>
+                  <input type="text" name="telefono" className='inputConsultaText' placeholder='Telefono' onChange={handleChange}/>
+                  <input type="email" name="email" className='inputConsultaText' placeholder='Email' onChange={handleChange}/>
+                  <textarea name="consulta" cols="30" rows="10" className='inputConsultaMsj' placeholder='Mensaje' onChange={handleChange}></textarea>
+                  <input type="text" name="viajeForm" className='inputConsultaText Id' value={params.id} onChange={handleChange}/>
+                  <input type="button" value="Enviar" className='inputConsultaBtn' onClick={() => setInFireBase(formulario)}/>
+                  <input type="button" value="cerrar" className='inputConsultaBtn' onClick={() => aparecerForm(form)}/>
+              </div>
+          </div>
+        </div>}
         <Footer key="Footer" Facebook={Facebook} Instagram={Instagram} Whatsapp={Whatsapp}/>
     </div>
   )

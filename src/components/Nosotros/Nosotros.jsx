@@ -13,7 +13,7 @@ const Nosotros = (props) => {
       <div className='containerDatosNosotros'>
         <img src={logo} alt="logo" />
         <h1>Agentes de viaje certificados</h1>
-        <p>En cada viaje ofrecemos calidad, precio y beneficios, logrando la mejor relación entre precio y producto</p>
+        <p>10 años en Turismo para brindarte y garantizarte un servicio personalizado a la hora de viajar</p>
       </div>  
       <Footer key="Footer" Facebook={Facebook} Instagram={Instagram} Whatsapp={Whatsapp}/>
     </div>

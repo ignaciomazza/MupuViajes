@@ -8,6 +8,21 @@
   background-color: rgb(20, 20, 20);
 }
 
+.gradient{
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  position: relative;
+  top: 3.5rem;
+  right: 15vw;
+  height: 20vh;
+  width: 100vw;
+}
+
+.pos{
+  position: relative;
+  top: 9rem;
+}
+
 /*--------NavBar--------*/
 
 .space{
@@ -216,7 +231,6 @@ nav .ul-desktop{
 }
 
 .tituloConsulta{
-  margin: .5rem 1rem;
   color: white;
 }
 

@@ -47,7 +47,6 @@ const Consulta = () => {
       <div className='containerRowConsulta'>
         <div className='encabezadoConsulta'>
               <h1 className='tituloConsulta'>Hacenos tu consulta</h1>
-              <p className='textoConsulta'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem aliquam eius, tempore voluptatum officiis eum in! Voluptatum, deleniti! Non aperiam ullam, fugiat fuga blanditiis officia nam necessitatibus a. Minus, aut!</p>
           </div>
           <div className='consulta'>
               <input type="text" name="nombre" className='inputConsultaText' placeholder='Nombre' onChange={handleChange}/>

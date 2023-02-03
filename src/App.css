@@ -18,9 +18,29 @@
   width: 100vw;
 }
 
+.gradientViajes{
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,.85) 50%, rgba(0,0,0,0) 100%);
+  position: relative;
+  height: 8.5rem;
+  width: 100%;
+  border-radius: .2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .pos{
   position: relative;
   top: 9rem;
+}
+
+.error{
+  color: rgb(255, 255, 255);
+  padding: 1rem;
+  border-radius: .2rem;
+  margin: 4rem auto 6rem;
+  font-size: 1.6rem;
 }
 
 /*--------NavBar--------*/
@@ -416,6 +436,11 @@ nav .ul-desktop{
   width: 270px;
 }
 
+.precioCategoria{
+  font-size: 1rem;
+  margin: .3rem 0rem 0rem;
+}
+
 .nombreCategoria h5{
   color: white;
   text-align: center;
@@ -443,7 +468,7 @@ nav .ul-desktop{
 
 .gradientBanner{
   background: rgb(0,0,0);
-  background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(40,40,40,0) 100%);
+  background: linear-gradient(0deg, rgba(20,20,20,1) 0%, rgba(40,40,40,0) 100%);
   position: absolute;
   top: 328.5px;
   height: 100px;
@@ -452,6 +477,7 @@ nav .ul-desktop{
 
 .bannerViajes h1{
   color: white;
+  padding-left: 2rem;
 }
 
 .ordenarContainer{
@@ -467,7 +493,7 @@ nav .ul-desktop{
   position: absolute;
   text-align: center;
   top: 30rem;
-  right: 1vw;
+  right: 2vw;
 }
 
 .textoOrdenar:hover{
@@ -685,8 +711,8 @@ nav .ul-desktop{
 .containerFormViaje{
   display: flex;
   position: fixed;
-  top: 20%;
-  left: 35%;
+  top: 14vh;
+  left: 36%;
   z-index: 999999999999999;
   border: 1px solid rgb(40, 40, 40);
   box-shadow: 0px 0px 10px 0px rgb(10, 10, 10);
@@ -695,7 +721,7 @@ nav .ul-desktop{
 
 .consultaViaje{
   flex: 50%;
-  padding: 4rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -713,7 +739,9 @@ nav .ul-desktop{
   display: flex;
   justify-content: space-evenly;
   background-color: transparent;
-  width: 100%;
+  margin: 0 auto;
+  width: 98%;
+  padding-top: 4rem;
 }
 
 .redesFooter{

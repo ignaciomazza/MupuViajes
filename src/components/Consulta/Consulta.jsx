@@ -26,12 +26,12 @@ const Consulta = () => {
     });
   }
 
-  const setInFireBase = async (email, nombre, apellido, telefono, consulta) => {
-    if (email != "" && nombre != "" && apellido != "" && telefono != "" && consulta != "") {
+  const setInFireBase = async (form) => {
+    if (form.email != "" && form.nombre != "" && form.apellido != "" && form.telefono != "" && form.consulta != "") {
       try {
         const data = collection(db, "consulta");
-        const col = await addDoc(data, email, nombre, apellido, telefono, consulta);
-        alert("Su numero de orden es: " + col.id)
+        const col = await addDoc(data, form);
+        alert("Consulta exitosa")
       } catch (error) {
         console.log(error)
       }

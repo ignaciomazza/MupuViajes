@@ -45,12 +45,12 @@ const Viaje = () => {
       });
     }
   
-    const setInFireBase = async (email, nombre, apellido, telefono, reserva, viajeForm) => {
-      if (email != "" && nombre != "" && apellido != "" && telefono != "" && reserva != "") {
+    const setInFireBase = async (form) => {
+      if (form.email != "" && form.nombre != "" && form.apellido != "" && form.telefono != "" && form.reserva != "") {
         try {
           const data = collection(db, "reservas");
-          const col = await addDoc(data, email, nombre, apellido, telefono, reserva, viajeForm);
-          alert("Su numero de orden es: " + col.id)
+          const col = await addDoc(data, form);
+          alert("Reserva exitosa")
         } catch (error) {
           console.log(error)
         }
@@ -106,11 +106,11 @@ const Viaje = () => {
                   <p>Duracion: {item.duracion}</p>
                   <p>Transporte: {item.transporte}</p>
                   <p>Hotel: {item.hotel}</p>
-                  {item.alojamiento != false && <p>Alojamiento incluido</p>}
+                  {item.alojamiento != "false" && <p>Alojamiento incluido</p>}
                   <p>Regimen de comida: {item.regimen}</p>
                   <p>Excursiones: {item.excursiones}</p>
-                  {item.asistencia != false && <p>Asistencia al viajero</p>}
-                  {item.traslado != false && <p>Traslados</p>}
+                  {item.asistencia != "false" && <p>Asistencia al viajero</p>}
+                  {item.traslado != "false" && <p>Traslados</p>}
                   
                 </div>
                 <div className='pagoViaje'>

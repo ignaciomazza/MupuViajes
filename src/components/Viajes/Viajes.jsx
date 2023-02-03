@@ -188,8 +188,8 @@ const Viajes = () => {
         <h1>Viajes</h1>
         <div className='ordenarContainer'>
           {ordenar == true &&<div className='ordenar'>
-            <Link to={`/category/${params.id}/destination/all/tidy/mayor`}><p>de mayor a menor</p></Link>
-            <Link to={`/category/${params.id}/destination/all/tidy/menor`}><p>de menor a mayor</p></Link>
+            <Link to={`/category/${params.id}/destination/all/tidy/mayor`}><p><b>Precio: </b>De mayor a menor</p></Link>
+            <Link to={`/category/${params.id}/destination/all/tidy/menor`}><p><b>Precio: </b>De menor a mayor</p></Link>
           </div>}
           <p onClick={() => aparecerOrdenar(ordenar)} className='textoOrdenar'>Ordenar ↓</p>
         </div>
@@ -220,7 +220,7 @@ const Viajes = () => {
           {params.id == "caribe" && <div className='btnProvincias' onClick={() => aparecerIslas(islas)}>Ver islas</div>}
           {islas == true && <div className='provincias'>
             <ul>
-              {arrayPlayas.map((item, index) => (
+              {arrayIslas.map((item, index) => (
                 <li>
                   <Link to={`/category/${params.id}/destination/${item.id}/tidy/mayor`}>{item.nombre}</Link>
                 </li>
@@ -254,7 +254,7 @@ const Viajes = () => {
                 <div className='containerCategoria' >
                   <img src={item.img} alt=""/>
                   <div className='nombreCategoria'>
-                    <h5>{item.nombre.toUpperCase()}</h5>
+                    <h5 className='gradientViajes'>{item.nombre.toUpperCase()}<p className='precioCategoria'>${item.precio}</p></h5>
                   </div>
                 </div>
               </Link>
@@ -266,7 +266,7 @@ const Viajes = () => {
                 <div className='containerCategoria' >
                   <img src={item.img} alt=""/>
                   <div className='nombreCategoria'>
-                    <h5>{item.nombre.toUpperCase()}</h5>
+                    <h5>{item.nombre.toUpperCase()}<p className='precioCategoria'>${item.precio}</p></h5>
                   </div>
                 </div>
               </Link>
@@ -278,7 +278,7 @@ const Viajes = () => {
                 <div className='containerCategoria' >
                   <img src={item.img} alt=""/>
                   <div className='nombreCategoria'>
-                    <h5>{item.nombre.toUpperCase()}</h5>
+                    <h5>{item.nombre.toUpperCase()}<p className='precioCategoria'>${item.precio}</p></h5>
                   </div>
                 </div>
               </Link>
@@ -290,7 +290,7 @@ const Viajes = () => {
                 <div className='containerCategoria' >
                   <img src={item.img} alt=""/>
                   <div className='nombreCategoria'>
-                    <h5>{item.nombre.toUpperCase()}</h5>
+                    <h5>{item.nombre.toUpperCase()}<p className='precioCategoria'>${item.precio}</p></h5>
                   </div>
                 </div>
               </Link>
@@ -302,7 +302,7 @@ const Viajes = () => {
                 <div className='containerCategoria' >
                   <img src={item.img} alt=""/>
                   <div className='nombreCategoria'>
-                    <h5>{item.nombre.toUpperCase()}</h5>
+                    <h5>{item.nombre.toUpperCase()}<p className='precioCategoria'>${item.precio}</p></h5>
                   </div>
                 </div>
               </Link>
@@ -314,7 +314,7 @@ const Viajes = () => {
                 <div className='containerCategoria' >
                   <img src={item.img} alt=""/>
                   <div className='nombreCategoria'>
-                    <h5>{item.nombre.toUpperCase()}</h5>
+                    <h5>{item.nombre.toUpperCase()}<p className='precioCategoria'>${item.precio}</p></h5>
                   </div>
                 </div>
               </Link>

@@ -7,6 +7,7 @@ import Footer from '../Footer/Footer.jsx';
 import Facebook from '../../img/facebook.svg';
 import Instagram from '../../img/instagram.svg';
 import Whatsapp from '../../img/whatsapp.svg';
+import Banner from '../../img/banner.jpg';
 
 const Search = () => {
 
@@ -61,7 +62,7 @@ const Search = () => {
     setTimeout(() => {
       resolve(getData())
       
-    }, 1000);
+    }, 400);
   })
 
   task
@@ -78,20 +79,22 @@ const Search = () => {
   return (
     <div>
       <div className='bannerViajes'>
+        <img src={Banner} alt="" />
+        <div className='gradientBanner'></div>
         <h1>Viajes</h1>
-        <div>
-          <p onClick={() => aparecerOrdenar(ordenar)}>ordenar</p>
-          {ordenar == true &&<div>
-            <Link to={`/search/${params.id}/tidy/mayor`}><p>de mayor a menor</p></Link>
-            <Link to={`/search/${params.id}/tidy/menor`}><p>de menor a mayor</p></Link>
+        <div className='ordenarContainer'>
+          {ordenar == true &&<div className='ordenar'>
+            <Link to={`/category/${params.id}/destination/all/tidy/mayor`}><p>de mayor a menor</p></Link>
+            <Link to={`/category/${params.id}/destination/all/tidy/menor`}><p>de menor a mayor</p></Link>
           </div>}
+          <p onClick={() => aparecerOrdenar(ordenar)} className='textoOrdenar'>Ordenar ↓</p>
         </div>
       </div>
       <div className='filtrosYcategorias'>
-        <div className='containerLinkCategoriaViajes'>
+        {objetoBuscar.length > 0 && <div className='containerLinkCategoriaViajes'>
           {objetoBuscar.map((item, index) => (
               <Link className='linkCategoria' to={`/travel-detail/${item.id}`}>
-                <div className='containerCategoria' >
+                <div className='containerCategoria'>
                   <img src={item.img} alt=""/>
                   <div className='nombreCategoria'>
                     <h5>{item.nombre.toUpperCase()}</h5>
@@ -99,7 +102,8 @@ const Search = () => {
                 </div>
               </Link>
           ))}
-        </div>
+        </div>}
+        {objetoBuscar.length == 0 && <div className='error'><b>No se encontraron resultados...</b></div>}
       </div>
       <Footer key="Footer" Facebook={Facebook} Instagram={Instagram} Whatsapp={Whatsapp}/>
     </div>

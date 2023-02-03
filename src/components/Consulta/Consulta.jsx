@@ -21,18 +21,16 @@ const Consulta = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormulario({
-      consulta: {
-        ...formulario.consulta,
-        [name]: value
-      }
+      ...formulario,
+      [name]: value
     });
   }
 
-  const setInFireBase = async (consulta) => {
-    if (consulta.email != "" && consulta.nombre != "" && consulta.apellido != "" && consulta.telefono != "" && consulta.consulta != "") {
+  const setInFireBase = async (email, nombre, apellido, telefono, consulta) => {
+    if (email != "" && nombre != "" && apellido != "" && telefono != "" && consulta != "") {
       try {
         const data = collection(db, "consulta");
-        const col = await addDoc(data, consulta);
+        const col = await addDoc(data, email, nombre, apellido, telefono, consulta);
         alert("Su numero de orden es: " + col.id)
       } catch (error) {
         console.log(error)

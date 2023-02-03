@@ -14,6 +14,8 @@ const Viaje = () => {
     const viaje = params ? viajes.filter((item) => item.id === params.id) : viajes
 
     const [form, setForm] = useState(false);
+    const [viajeId, setViajeId] = useState(params.id);
+
 
     function aparecerForm (valor) {
       if (valor){
@@ -28,27 +30,26 @@ const Viaje = () => {
       nombre: "",
       apellido: "",
       telefono: "",
-      reservas: "",
+      reserva: "",
       viajeForm: ""
     });
   
-    const {email, nombre, apellido, telefono, reservas, viajeForm } = formulario;
+    const {email, nombre, apellido, telefono, reserva, viajeForm } = formulario;
   
     const handleChange = (e) => {
       const { name, value } = e.target;
       setFormulario({
-        reservas: {
-          ...formulario.reservas,
-          [name]: value
-        }
+          ...formulario,
+          [name]: value,
+          viajeForm: viaje[0]
       });
     }
   
-    const setInFireBase = async (reservas) => {
-      if (reservas.email != "" && reservas.nombre != "" && reservas.apellido != "" && reservas.telefono != "" && reservas.consulta != "") {
+    const setInFireBase = async (email, nombre, apellido, telefono, reserva, viajeForm) => {
+      if (email != "" && nombre != "" && apellido != "" && telefono != "" && reserva != "") {
         try {
           const data = collection(db, "reservas");
-          const col = await addDoc(data, reservas);
+          const col = await addDoc(data, email, nombre, apellido, telefono, reserva, viajeForm);
           alert("Su numero de orden es: " + col.id)
         } catch (error) {
           console.log(error)
@@ -124,20 +125,20 @@ const Viaje = () => {
               </div>
           </div>
         ))}
-        {form == true && <div className='containerFormViaje'>
-          <div className='containerdatosConsulta'>
-              <div className='consulta'>
-                  <input type="text" name="nombre" className='inputConsultaText' placeholder='Nombre' onChange={handleChange}/>
-                  <input type="text" name="apellido" className='inputConsultaText' placeholder='Apellido' onChange={handleChange}/>
-                  <input type="text" name="telefono" className='inputConsultaText' placeholder='Telefono' onChange={handleChange}/>
-                  <input type="email" name="email" className='inputConsultaText' placeholder='Email' onChange={handleChange}/>
-                  <textarea name="consulta" cols="30" rows="10" className='inputConsultaMsj' placeholder='Mensaje' onChange={handleChange}></textarea>
-                  <input type="text" name="viajeForm" className='inputConsultaText Id' value={params.id} onChange={handleChange}/>
-                  <input type="button" value="Enviar" className='inputConsultaBtn' onClick={() => setInFireBase(formulario)}/>
-                  <input type="button" value="cerrar" className='inputConsultaBtn' onClick={() => aparecerForm(form)}/>
-              </div>
-          </div>
-        </div>}
+          {form == true && <div className='containerFormViaje'>
+            <div className='containerdatosConsulta'>
+                <div className='consultaViaje'>
+                    <input type="text" name="nombre" className='inputConsultaText' placeholder='Nombre' onChange={handleChange}/>
+                    <input type="text" name="apellido" className='inputConsultaText' placeholder='Apellido' onChange={handleChange}/>
+                    <input type="text" name="telefono" className='inputConsultaText' placeholder='Telefono' onChange={handleChange}/>
+                    <input type="email" name="email" className='inputConsultaText' placeholder='Email' onChange={handleChange}/>
+                    <textarea name="reserva" cols="30" rows="10" className='inputConsultaMsj' placeholder='Mensaje' onChange={handleChange}></textarea>
+                    <input type="button" value="Enviar" className='inputConsultaBtn' onClick={() => setInFireBase(formulario)}/>
+                    <input type="button" value="cerrar" className='inputConsultaBtn' onClick={() => aparecerForm(form)}/>
+                </div>
+            </div>
+          </div>}
+        
         <Footer key="Footer" Facebook={Facebook} Instagram={Instagram} Whatsapp={Whatsapp}/>
     </div>
   )

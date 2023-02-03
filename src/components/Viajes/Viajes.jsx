@@ -98,20 +98,6 @@ const Viajes = () => {
 
   const arrayIslas = [{id: "all" ,nombre: "Todos"},{id: "barbuda" ,nombre: "Antigua y Barbuda"},{id: "bahamas" ,nombre: "Bahamas"},{id: "barbados" ,nombre: "Barbados"},{id: "cuba" ,nombre: "Cuba"},{id: "dominica" ,nombre: "Dominica"},{id: "granada" ,nombre: "Granada"},{id: "haiti" ,nombre: "Haití"},{id: "jamaica" ,nombre: "Jamaica"},{id: "dominicana" ,nombre: "República Dominicana"},{id: "cristobal" ,nombre: "San Cristóbal y Nieves"},{id: "granadinas" ,nombre: "San Vicente y las Granadinas"},{id: "lucia" ,nombre: "Santa Lucía"},{id: "trinidad" ,nombre: "Trinidad y Tobago"},{id: "mexico" ,nombre: "México"},{id: "belice" ,nombre: "Belice"},{id: "costarica" ,nombre: "Costa Rica"},{id: "panama" ,nombre: "Panamá"},{id: "nicaragua" ,nombre: "Nicaragua"},{id: "honduras" ,nombre: "Honduras"},{id: "puertorico" ,nombre: "Puerto Rico"}];
 
-
-  // const [rutas, setRutas] = useState([]);
-
-  // function aparecerRutas (rutas) {
-  //   if (rutas){
-  //     setIslas(false)
-  //   }else{
-  //     setIslas(true)
-  //   }
-  // }
-
-  // const arrayRutas = [{id: "bsas" ,nombre: "Buenos Aires"},{id: "fe" ,nombre: "Santa Fe"},{id: "cordoba" ,nombre: "Cordoba"},{id: "rios" ,nombre: "Entre Rios"},{id: "corrientes" ,nombre: "Corrientes"},{id: "misiones" ,nombre: "Misiones"},{id: "mendoza" ,nombre: "Mendoza"},{id: "jujuy" ,nombre: "Jujuy"},{id: "salta" ,nombre: "Salta"},{id: "tucuman" ,nombre: "Tucuman"},{id: "estero" ,nombre: "Santiago Del Estero"},{id: "chaco" ,nombre: "Chaco"},{id: "formosa" ,nombre: "Formosa"},{id: "negro" ,nombre: "Rio Negro"},{id: "pampa" ,nombre: "La Pampa"},{id: "fuego" ,nombre: "Tierra Del Fuego"},{id: "neuquen" ,nombre: "Neuquen"},{id: "juan" ,nombre: "San Juan"},{id: "cruz" ,nombre: "Santa Cruz"},{id: "chubut" ,nombre: "Chubut"}, {id: "luis" ,nombre: "San Luis"}, {id: "rioja" ,nombre: "La Rioja"}, {id: "catamarca" ,nombre: "Catamarca"}];
-
-
   const [europa, setEuropa] = useState([]);
 
   function aparecerEuropa (europa) {
@@ -198,20 +184,21 @@ const Viajes = () => {
         {Banner.map((item, index) => (
           <img src={item.img} alt="" />
         ))}
+        <div className='gradientBanner'></div>
         <h1>Viajes</h1>
-        <div>
-          <p onClick={() => aparecerOrdenar(ordenar)}>ordenar</p>
-          {ordenar == true &&<div>
+        <div className='ordenarContainer'>
+          {ordenar == true &&<div className='ordenar'>
             <Link to={`/category/${params.id}/destination/all/tidy/mayor`}><p>de mayor a menor</p></Link>
             <Link to={`/category/${params.id}/destination/all/tidy/menor`}><p>de menor a mayor</p></Link>
           </div>}
+          <p onClick={() => aparecerOrdenar(ordenar)} className='textoOrdenar'>Ordenar ↓</p>
         </div>
       </div>
       <div className='filtrosYcategorias'>
         <div className='viajesFiltros'>
-          {params.id == "busarg" && <div className='btnProvincias' onClick={() => aparecerProvincias(provincias)}>Provincias</div>}
-          {params.id == "argavion" && <div className='btnProvincias' onClick={() => aparecerProvincias(provincias)}>Provincias</div>}
-          {provincias == true &&<div className='provincias'>
+          {params.id == "busarg" && <div className='btnProvincias' onClick={() => aparecerProvincias(provincias)}>Ver provincias</div>}
+          {params.id == "argavion" && <div className='btnProvincias' onClick={() => aparecerProvincias(provincias)}>Ver provincias</div>}
+          {provincias == true && <div className='provincias'>
             <ul>
               {arrayProvincias.map((item, index) => (
                 <li>
@@ -220,10 +207,8 @@ const Viajes = () => {
               ))}
             </ul>
           </div>}
-        </div>
-        <div className='viajesFiltros'>
-          {params.id == "brasil" && <div className='btnProvincias' onClick={() => aparecerPlayas(playas)}>Playas</div>}
-          {playas == true &&<div className='provincias'>
+          {params.id == "brasil" && <div className='btnProvincias' onClick={() => aparecerPlayas(playas)}>Ver playas</div>}
+          {playas == true && <div className='provincias'>
             <ul>
               {arrayPlayas.map((item, index) => (
                 <li>
@@ -232,10 +217,8 @@ const Viajes = () => {
               ))}
             </ul>
           </div>}
-        </div>
-        <div className='viajesFiltros'>
-          {params.id == "caribe" && <div className='btnProvincias' onClick={() => aparecerIslas(islas)}>Islas</div>}
-          {islas == true &&<div className='provincias'>
+          {params.id == "caribe" && <div className='btnProvincias' onClick={() => aparecerIslas(islas)}>Ver islas</div>}
+          {islas == true && <div className='provincias'>
             <ul>
               {arrayPlayas.map((item, index) => (
                 <li>
@@ -244,9 +227,7 @@ const Viajes = () => {
               ))}
             </ul>
           </div>}
-        </div>
-        <div className='viajesFiltros'>
-          {params.id == "europa" && <div className='btnProvincias' onClick={() => aparecerEuropa(europa)}>Paises</div>}
+          {params.id == "europa" && <div className='btnProvincias' onClick={() => aparecerEuropa(europa)}>Ver paises</div>}
           {europa == true &&<div className='provincias'>
             <ul>
               {arrayEuropa.map((item, index) => (
@@ -256,9 +237,7 @@ const Viajes = () => {
               ))}
             </ul>
           </div>}
-        </div>
-        <div className='viajesFiltros'>
-          {params.id == "latinoamerica" && <div className='btnProvincias' onClick={() => aparecerLatam(latam)}>Paises</div>}
+          {params.id == "latinoamerica" && <div className='btnProvincias' onClick={() => aparecerLatam(latam)}>Ver paises</div>}
           {latam == true &&<div className='provincias'>
             <ul>
               {arrayLatam.map((item, index) => (
@@ -281,7 +260,7 @@ const Viajes = () => {
               </Link>
           ))}
         </div>}
-        {params.dest != "all" && <div className='containerLinkCategoriaViajes'>
+        {params.dest != "all" && params.id == "busarg" && <div className='containerLinkCategoriaViajes'>
           {filtradoProvincia.map((item, index) => (
               <Link className='linkCategoria' to={`/travel-detail/${item.id}`}>
                 <div className='containerCategoria' >
@@ -293,7 +272,7 @@ const Viajes = () => {
               </Link>
           ))}
         </div>}
-        {params.dest != "all" && <div className='containerLinkCategoriaViajes'>
+        {params.dest != "all" && params.id == "brasil" && <div className='containerLinkCategoriaViajes'>
           {filtradoPlayas.map((item, index) => (
               <Link className='linkCategoria' to={`/travel-detail/${item.id}`}>
                 <div className='containerCategoria' >
@@ -305,7 +284,7 @@ const Viajes = () => {
               </Link>
           ))}
         </div>}
-        {params.dest != "all" && <div className='containerLinkCategoriaViajes'>
+        {params.dest != "all" && params.id == "europa" && <div className='containerLinkCategoriaViajes'>
           {filtradoEuropa.map((item, index) => (
               <Link className='linkCategoria' to={`/travel-detail/${item.id}`}>
                 <div className='containerCategoria' >
@@ -317,7 +296,7 @@ const Viajes = () => {
               </Link>
           ))}
         </div>}
-        {params.dest != "all" && <div className='containerLinkCategoriaViajes'>
+        {params.dest != "all" && params.id == "latinoamerica" && <div className='containerLinkCategoriaViajes'>
           {filtradoLatam.map((item, index) => (
               <Link className='linkCategoria' to={`/travel-detail/${item.id}`}>
                 <div className='containerCategoria' >
@@ -329,7 +308,7 @@ const Viajes = () => {
               </Link>
           ))}
         </div>}
-        {params.dest != "all" && <div className='containerLinkCategoriaViajes'>
+        {params.dest != "all" && params.id == "caribe" && <div className='containerLinkCategoriaViajes'>
           {filtradoIslas.map((item, index) => (
               <Link className='linkCategoria' to={`/travel-detail/${item.id}`}>
                 <div className='containerCategoria' >

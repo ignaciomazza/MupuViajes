@@ -13,7 +13,8 @@ const Consulta = () => {
     nombre: "",
     apellido: "",
     telefono: "",
-    consulta: ""
+    consulta: "",
+    visto: "false"
   });
 
   const {email, nombre, apellido, telefono, consulta } = formulario;

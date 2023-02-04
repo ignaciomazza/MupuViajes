@@ -53,7 +53,7 @@ const Viajes = () => {
   
   
   const filtradoProvincia = params ? Categoria.filter((item) => item.provincia === params.dest) : viajes
-  const filtradoPlayas = params ? Categoria.filter((item) => item.playa === params.dest) : viajes
+  // const filtradoPlayas = params ? Categoria.filter((item) => item.playa === params.dest) : viajes
   const filtradoEuropa = params ? Categoria.filter((item) => item.pais === params.dest) : viajes
   const filtradoLatam = params ? Categoria.filter((item) => item.pais === params.dest) : viajes
   const filtradoIslas = params ? Categoria.filter((item) => item.pais === params.dest) : viajes
@@ -73,17 +73,17 @@ const Viajes = () => {
 
 
 
-  const [playas, setPlayas] = useState([]);
+  // const [playas, setPlayas] = useState([]);
 
-  function aparecerPlayas (playas) {
-    if (playas){
-      setPlayas(false)
-    }else{
-      setPlayas(true)
-    }
-  }
+  // function aparecerPlayas (playas) {
+  //   if (playas){
+  //     setPlayas(false)
+  //   }else{
+  //     setPlayas(true)
+  //   }
+  // }
 
-  const arrayPlayas = [{id: "all" ,nombre: "Todos"},{id: "bahia" ,nombre: "Salvador de Bahía"},{id: "recife" ,nombre: "Recife"},{id: "olinda" ,nombre: "Olinda"},{id: "rio" ,nombre: "Río de Janeiro"},{id: "buzios" ,nombre: "Buzios"},{id: "iguazu" ,nombre: "Parque Nacional de Iguazú"},{id: "ruinas" ,nombre: "Ruinas de San Miguel de las Misiones"},{id: "ouropreto" ,nombre: "OuroPreto"},{id: "brasilia" ,nombre: "Brasilia"},{id: "manaos" ,nombre: "Manaos"}];
+  // const arrayPlayas = [{id: "all" ,nombre: "Todos"},{id: "bahia" ,nombre: "Salvador de Bahía"},{id: "recife" ,nombre: "Recife"},{id: "olinda" ,nombre: "Olinda"},{id: "rio" ,nombre: "Río de Janeiro"},{id: "buzios" ,nombre: "Buzios"},{id: "iguazu" ,nombre: "Parque Nacional de Iguazú"},{id: "ruinas" ,nombre: "Ruinas de San Miguel de las Misiones"},{id: "ouropreto" ,nombre: "OuroPreto"},{id: "brasilia" ,nombre: "Brasilia"},{id: "manaos" ,nombre: "Manaos"}];
 
 
   const [islas, setIslas] = useState([]);
@@ -207,8 +207,8 @@ const Viajes = () => {
               ))}
             </ul>
           </div>}
-          {params.id == "brasil" && <div className='btnProvincias' onClick={() => aparecerPlayas(playas)}>Ver playas</div>}
-          {playas == true && <div className='provincias'>
+          {/* {params.id == "brasil" && <div className='btnProvincias' onClick={() => aparecerPlayas(playas)}>Ver playas</div>} */}
+          {/* {playas == true && <div className='provincias'>
             <ul>
               {arrayPlayas.map((item, index) => (
                 <li>
@@ -216,7 +216,7 @@ const Viajes = () => {
                 </li>
               ))}
             </ul>
-          </div>}
+          </div>} */}
           {params.id == "caribe" && <div className='btnProvincias' onClick={() => aparecerIslas(islas)}>Ver islas</div>}
           {islas == true && <div className='provincias'>
             <ul>
@@ -272,7 +272,7 @@ const Viajes = () => {
               </Link>
           ))}
         </div>}
-        {params.dest != "all" && params.id == "brasil" && <div className='containerLinkCategoriaViajes'>
+        {/* {params.dest != "all" && params.id == "brasil" && <div className='containerLinkCategoriaViajes'>
           {filtradoPlayas.map((item, index) => (
               <Link className='linkCategoria' to={`/travel-detail/${item.id}`}>
                 <div className='containerCategoria' >
@@ -283,7 +283,7 @@ const Viajes = () => {
                 </div>
               </Link>
           ))}
-        </div>}
+        </div>} */}
         {params.dest != "all" && params.id == "europa" && <div className='containerLinkCategoriaViajes'>
           {filtradoEuropa.map((item, index) => (
               <Link className='linkCategoria' to={`/travel-detail/${item.id}`}>

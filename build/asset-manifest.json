@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.859cd0c0.css",
+    "main.js": "/static/js/main.d292991d.js",
+    "static/js/787.7328294e.chunk.js": "/static/js/787.7328294e.chunk.js",
+    "static/media/banner.jpg": "/static/media/banner.aea90edb93d54e48ab35.jpg",
+    "static/media/consulta.png": "/static/media/consulta.73e13527ac4d3f49e37e.png",
+    "static/media/4.png": "/static/media/4.eb4cd961bdd93ecd3687.png",
+    "static/media/5.png": "/static/media/5.b45553266bfb4150dc81.png",
+    "static/media/2.png": "/static/media/2.aba8465d8dee6331a135.png",
+    "static/media/3.png": "/static/media/3.53be8e072ca5130890c3.png",
+    "static/media/1.png": "/static/media/1.4b934f6c701df2c9bd86.png",
+    "static/media/logo.png": "/static/media/logo.76079627aac3c3f8e46f.png",
+    "static/media/instagram.svg": "/static/media/instagram.c2056460bbbf6c051f72df6d7c2fa6dc.svg",
+    "static/media/whatsapp.svg": "/static/media/whatsapp.294a9207675db77b3d9504a6175f26d4.svg",
+    "index.html": "/index.html",
+    "static/media/facebook.svg": "/static/media/facebook.9b444da5aa9a56243f8c6dde17a22a43.svg",
+    "main.859cd0c0.css.map": "/static/css/main.859cd0c0.css.map",
+    "main.d292991d.js.map": "/static/js/main.d292991d.js.map",
+    "787.7328294e.chunk.js.map": "/static/js/787.7328294e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.859cd0c0.css",
+    "static/js/main.d292991d.js"
+  ]
+}

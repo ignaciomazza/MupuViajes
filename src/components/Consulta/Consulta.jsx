@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import Footer from '../Footer/Footer.jsx';
-import Facebook from '../../img/facebook.svg';
-import Instagram from '../../img/instagram.svg';
-import Whatsapp from '../../img/whatsapp.svg';
 import db from '../../services'
 import { collection, addDoc } from 'firebase/firestore';
 
@@ -56,7 +53,7 @@ const Consulta = () => {
               <input type="button" value="Enviar" className='inputConsultaBtn z' onClick={() => setInFireBase(formulario)}/>
           </div>
       </div>
-        <Footer key="Footer" Facebook={Facebook} Instagram={Instagram} Whatsapp={Whatsapp}/>
+        <Footer key="Footer"/>
     </div>
   )
 }

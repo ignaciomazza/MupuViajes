@@ -4,9 +4,6 @@ import { useParams } from 'react-router-dom';
 import db from '../../services'
 import { collection, getDocs } from 'firebase/firestore';
 import Footer from '../Footer/Footer.jsx';
-import Facebook from '../../img/facebook.svg';
-import Instagram from '../../img/instagram.svg';
-import Whatsapp from '../../img/whatsapp.svg';
 import Banner from '../../img/banner.jpg';
 
 const Search = () => {
@@ -69,7 +66,6 @@ const Search = () => {
     .then((resultado) => {
       setViajes(resultado)
     })
-    .catch((err) => console.log(err))
 
   return () => {
       
@@ -79,7 +75,7 @@ const Search = () => {
   return (
     <div>
       <div className='bannerViajes'>
-        <img src={Banner} alt="" />
+        <img src={Banner} alt="Banner"/>
         <div className='gradientBanner'></div>
         <h1>Viajes</h1>
         <div className='ordenarContainer'>
@@ -93,9 +89,9 @@ const Search = () => {
       <div className='filtrosYcategorias'>
         {objetoBuscar.length > 0 && <div className='containerLinkCategoriaViajes'>
           {objetoBuscar.map((item, index) => (
-              <Link className='linkCategoria' to={`/travel-detail/${item.id}`}>
+              <Link key={index.toString()} className='linkCategoria' to={`/travel-detail/${item.id}`}>
                 <div className='containerCategoria'>
-                  <img src={item.img} alt=""/>
+                  <img src={item.img} alt="Viaje"/>
                   <div className='nombreCategoria'>
                     <h5>{item.nombre.toUpperCase()}</h5>
                   </div>
@@ -105,7 +101,7 @@ const Search = () => {
         </div>}
         {objetoBuscar.length == 0 && <div className='error'><b>No se encontraron resultados...</b></div>}
       </div>
-      <Footer key="Footer" Facebook={Facebook} Instagram={Instagram} Whatsapp={Whatsapp}/>
+      <Footer key="Footer"/>
     </div>
   )
 }

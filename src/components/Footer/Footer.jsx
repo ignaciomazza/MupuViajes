@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const Footer = (props) => {
-  const {Facebook, Instagram, Whatsapp} = props;
+export const Footer = () => {
+
+  const blank = "blank"
+
   return (
     <div className='containerFooter'>
       <div className='localFooter'>
@@ -12,9 +14,9 @@ export const Footer = (props) => {
       <div className='redesFooter'>
         <h3 className='tituloFooter'>Redes Sociales</h3>
         <div className='containerImgFooter'>
-          <a  className='linkFooter' href=""><box-icon type='logo' name='facebook' size='lg' color='white'></box-icon></a>
-          <a className='linkFooter' href=""><box-icon type='logo' name='instagram' size='lg' color='white'></box-icon></a>
-          <a className='linkFooter' href=""><box-icon type='logo' name='whatsapp' size='lg' color='white'></box-icon></a>
+          <a  className='linkFooter' href="https://www.facebook.com/mupu.viajes.3" target={blank}><box-icon type='logo' name='facebook' size='lg' color='white'></box-icon></a>
+          <a className='linkFooter' href="https://www.instagram.com/mupuviajesturismo/?hl=es-la" target={blank}><box-icon type='logo' name='instagram' size='lg' color='white'></box-icon></a>
+          <a className='linkFooter' href="https://api.whatsapp.com/send?phone=5491159701234" target={blank}><box-icon type='logo' name='whatsapp' size='lg' color='white'></box-icon></a>
         </div>
       </div>
       <div className='contactanosFooter'>

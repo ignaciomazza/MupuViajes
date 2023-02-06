@@ -50,10 +50,7 @@ const Viajes = () => {
     });
   }
 
-  
-  
   const filtradoProvincia = params ? Categoria.filter((item) => item.provincia === params.dest) : viajes
-  // const filtradoPlayas = params ? Categoria.filter((item) => item.playa === params.dest) : viajes
   const filtradoEuropa = params ? Categoria.filter((item) => item.pais === params.dest) : viajes
   const filtradoLatam = params ? Categoria.filter((item) => item.pais === params.dest) : viajes
   const filtradoIslas = params ? Categoria.filter((item) => item.pais === params.dest) : viajes
@@ -70,21 +67,6 @@ const Viajes = () => {
   }
 
   const arrayProvincias = [{id: "all" ,nombre: "Todos"},{id: "bsas" ,nombre: "Buenos Aires"},{id: "fe" ,nombre: "Santa Fe"},{id: "cordoba" ,nombre: "Cordoba"},{id: "rios" ,nombre: "Entre Rios"},{id: "corrientes" ,nombre: "Corrientes"},{id: "misiones" ,nombre: "Misiones"},{id: "mendoza" ,nombre: "Mendoza"},{id: "jujuy" ,nombre: "Jujuy"},{id: "salta" ,nombre: "Salta"},{id: "tucuman" ,nombre: "Tucuman"},{id: "estero" ,nombre: "Santiago Del Estero"},{id: "chaco" ,nombre: "Chaco"},{id: "formosa" ,nombre: "Formosa"},{id: "negro" ,nombre: "Rio Negro"},{id: "pampa" ,nombre: "La Pampa"},{id: "fuego" ,nombre: "Tierra Del Fuego"},{id: "neuquen" ,nombre: "Neuquen"},{id: "juan" ,nombre: "San Juan"},{id: "cruz" ,nombre: "Santa Cruz"},{id: "chubut" ,nombre: "Chubut"}, {id: "luis" ,nombre: "San Luis"}, {id: "rioja" ,nombre: "La Rioja"}, {id: "catamarca" ,nombre: "Catamarca"}];
-
-
-
-  // const [playas, setPlayas] = useState([]);
-
-  // function aparecerPlayas (playas) {
-  //   if (playas){
-  //     setPlayas(false)
-  //   }else{
-  //     setPlayas(true)
-  //   }
-  // }
-
-  // const arrayPlayas = [{id: "all" ,nombre: "Todos"},{id: "bahia" ,nombre: "Salvador de Bahía"},{id: "recife" ,nombre: "Recife"},{id: "olinda" ,nombre: "Olinda"},{id: "rio" ,nombre: "Río de Janeiro"},{id: "buzios" ,nombre: "Buzios"},{id: "iguazu" ,nombre: "Parque Nacional de Iguazú"},{id: "ruinas" ,nombre: "Ruinas de San Miguel de las Misiones"},{id: "ouropreto" ,nombre: "OuroPreto"},{id: "brasilia" ,nombre: "Brasilia"},{id: "manaos" ,nombre: "Manaos"}];
-
 
   const [islas, setIslas] = useState([]);
 
@@ -110,7 +92,6 @@ const Viajes = () => {
 
   const arrayEuropa = [{id: "all" ,nombre: "Todos"},{id: "alemania" ,nombre: "Alemania"},{id: "reino" ,nombre: "Reino Unido"},{id: "italia" ,nombre: "Italia"},{id: "francia" ,nombre: "Francia"},{id: "ucrania" ,nombre: "Ucrania"},{id: "bajos" ,nombre: "Paises Bajos"},{id: "suiza" ,nombre: "Suiza"},{id: "grecia" ,nombre: "Grecia"},{id: "polonia" ,nombre: "Polonia"},{id: "austria" ,nombre: "Austria"},{id: "suecia" ,nombre: "Suecia"},{id: "belgica" ,nombre: "Belgica"},{id: "noruega" ,nombre: "Noruega"},{id: "irlanda" ,nombre: "Irlanda"},{id: "dinamarca" ,nombre: "Dinamarca"},{id: "croacia" ,nombre: "Croacia"},{id: "checa" ,nombre: "Republica Checa"},{id: "islandia" ,nombre: "Islandia"},{id: "finlandia" ,nombre: "Finlandia"},{id: "serbia" ,nombre: "Serbia"}, {id: "hungria" ,nombre: "Hungria"}, {id: "luxemburgo" ,nombre: "Luxemburgo"}, {id: "4slovenia" ,nombre: "Eslovenia"}, {id: "bosnia" ,nombre: "Bosnia"}, {id: "monaco" ,nombre: "Monaco"}, {id: "andorra" ,nombre: "Andorra"}];
 
-
   const [latam, setLatam] = useState([]);
 
   function aparecerLatam (latam) {
@@ -122,7 +103,6 @@ const Viajes = () => {
   }
 
   const arrayLatam = [{id: "all" ,nombre: "Todos"},{id: "argentina" ,nombre: "Argentina"},{id: "bolivia" ,nombre: "Bolivia"},{id: "brasil" ,nombre: "Brasil"},{id: "chile" ,nombre: "Chile"},{id: "colombia" ,nombre: "Colombia"},{id: "costarica" ,nombre: "Costa Rica"},{id: "cuba" ,nombre: "Cuba"},{id: "ecuador" ,nombre: "Ecuador"},{id: "salvador" ,nombre: "El Salvador"},{id: "guatemala" ,nombre: "Guatemala"},{id: "guyana" ,nombre: "Guyana"},{id: "haiti" ,nombre: "Haiti"},{id: "honduras" ,nombre: "Honduras"},{id: "jamaica" ,nombre: "Jamaica"},{id: "mexico" ,nombre: "Mexico"},{id: "nicaragua" ,nombre: "Nicaragua"},{id: "panama" ,nombre: "Panama"},{id: "paraguay" ,nombre: "Paraguay"},{id: "peru" ,nombre: "Peru"},{id: "dominicana" ,nombre: "Republica Dominicana"}, {id: "surinam" ,nombre: "Surinam"}, {id: "uruguay" ,nombre: "Uruguay"}, {id: "venezuela" ,nombre: "Venezuela"}];
-
 
   useEffect(() => {
 
@@ -144,7 +124,6 @@ const Viajes = () => {
     .then((resultado) => {
       setBanners(resultado)
     })
-    .catch((err) => console.log(err))
 
   return () => {
       
@@ -171,7 +150,6 @@ const Viajes = () => {
     .then((resultado) => {
       setViajes(resultado)
     })
-    .catch((err) => console.log(err))
 
   return () => {
       
@@ -182,7 +160,7 @@ const Viajes = () => {
     <div>
       <div className='bannerViajes'>
         {Banner.map((item, index) => (
-          <img src={item.img} alt="" />
+          <img key={index.toString()} src={item.img} alt="Banner"/>
         ))}
         <div className='gradientBanner'></div>
         <h1>Viajes</h1>
@@ -201,27 +179,17 @@ const Viajes = () => {
           {provincias == true && <div className='provincias'>
             <ul>
               {arrayProvincias.map((item, index) => (
-                <li>
+                <li key={index.toString()}>
                   <Link to={`/category/${params.id}/destination/${item.id}/tidy/mayor`}>{item.nombre}</Link>
                 </li>
               ))}
             </ul>
           </div>}
-          {/* {params.id == "brasil" && <div className='btnProvincias' onClick={() => aparecerPlayas(playas)}>Ver playas</div>} */}
-          {/* {playas == true && <div className='provincias'>
-            <ul>
-              {arrayPlayas.map((item, index) => (
-                <li>
-                  <Link to={`/category/${params.id}/destination/${item.id}/tidy/mayor`}>{item.nombre}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>} */}
           {params.id == "caribe" && <div className='btnProvincias' onClick={() => aparecerIslas(islas)}>Ver islas</div>}
           {islas == true && <div className='provincias'>
             <ul>
               {arrayIslas.map((item, index) => (
-                <li>
+                <li key={index.toString()}>
                   <Link to={`/category/${params.id}/destination/${item.id}/tidy/mayor`}>{item.nombre}</Link>
                 </li>
               ))}
@@ -231,7 +199,7 @@ const Viajes = () => {
           {europa == true &&<div className='provincias'>
             <ul>
               {arrayEuropa.map((item, index) => (
-                <li>
+                <li key={index.toString()}>
                   <Link to={`/category/${params.id}/destination/${item.id}/tidy/mayor`}>{item.nombre}</Link>
                 </li>
               ))}
@@ -241,7 +209,7 @@ const Viajes = () => {
           {latam == true &&<div className='provincias'>
             <ul>
               {arrayLatam.map((item, index) => (
-                <li>
+                <li key={index.toString()}>
                   <Link to={`/category/${params.id}/destination/${item.id}/tidy/mayor`}>{item.nombre}</Link>
                 </li>
               ))}
@@ -250,9 +218,9 @@ const Viajes = () => {
         </div>
         {params.dest == "all" && <div className='containerLinkCategoriaViajes'>
           {Categoria.map((item, index) => (
-              <Link className='linkCategoria' to={`/travel-detail/${item.id}`}>
+              <Link key={index.toString()} className='linkCategoria' to={`/travel-detail/${item.id}`}>
                 <div className='containerCategoria' >
-                  <img src={item.img} alt=""/>
+                  <img src={item.img} alt="Viaje"/>
                   <div className='nombreCategoria'>
                     <h5 className='gradientViajes'>{item.nombre.toUpperCase()}<p className='precioCategoria'>${item.precio}</p></h5>
                   </div>
@@ -262,33 +230,21 @@ const Viajes = () => {
         </div>}
         {params.dest != "all" && params.id == "busarg" && <div className='containerLinkCategoriaViajes'>
           {filtradoProvincia.map((item, index) => (
-              <Link className='linkCategoria' to={`/travel-detail/${item.id}`}>
+              <Link key={index.toString()} className='linkCategoria' to={`/travel-detail/${item.id}`}>
                 <div className='containerCategoria' >
-                  <img src={item.img} alt=""/>
+                  <img src={item.img} alt="Viaje"/>
                   <div className='nombreCategoria'>
                     <h5>{item.nombre.toUpperCase()}<p className='precioCategoria'>${item.precio}</p></h5>
                   </div>
                 </div>
               </Link>
           ))}
-        </div>}
-        {/* {params.dest != "all" && params.id == "brasil" && <div className='containerLinkCategoriaViajes'>
-          {filtradoPlayas.map((item, index) => (
-              <Link className='linkCategoria' to={`/travel-detail/${item.id}`}>
-                <div className='containerCategoria' >
-                  <img src={item.img} alt=""/>
-                  <div className='nombreCategoria'>
-                    <h5>{item.nombre.toUpperCase()}<p className='precioCategoria'>${item.precio}</p></h5>
-                  </div>
-                </div>
-              </Link>
-          ))}
-        </div>} */}
+        </div>} 
         {params.dest != "all" && params.id == "europa" && <div className='containerLinkCategoriaViajes'>
           {filtradoEuropa.map((item, index) => (
-              <Link className='linkCategoria' to={`/travel-detail/${item.id}`}>
+              <Link key={index.toString()} className='linkCategoria' to={`/travel-detail/${item.id}`}>
                 <div className='containerCategoria' >
-                  <img src={item.img} alt=""/>
+                  <img src={item.img} alt="Viaje"/>
                   <div className='nombreCategoria'>
                     <h5>{item.nombre.toUpperCase()}<p className='precioCategoria'>${item.precio}</p></h5>
                   </div>
@@ -298,9 +254,9 @@ const Viajes = () => {
         </div>}
         {params.dest != "all" && params.id == "latinoamerica" && <div className='containerLinkCategoriaViajes'>
           {filtradoLatam.map((item, index) => (
-              <Link className='linkCategoria' to={`/travel-detail/${item.id}`}>
+              <Link key={index.toString()} className='linkCategoria' to={`/travel-detail/${item.id}`}>
                 <div className='containerCategoria' >
-                  <img src={item.img} alt=""/>
+                  <img src={item.img} alt="Viaje"/>
                   <div className='nombreCategoria'>
                     <h5>{item.nombre.toUpperCase()}<p className='precioCategoria'>${item.precio}</p></h5>
                   </div>
@@ -310,9 +266,9 @@ const Viajes = () => {
         </div>}
         {params.dest != "all" && params.id == "caribe" && <div className='containerLinkCategoriaViajes'>
           {filtradoIslas.map((item, index) => (
-              <Link className='linkCategoria' to={`/travel-detail/${item.id}`}>
+              <Link key={index.toString()} className='linkCategoria' to={`/travel-detail/${item.id}`}>
                 <div className='containerCategoria' >
-                  <img src={item.img} alt=""/>
+                  <img src={item.img} alt="Viaje"/>
                   <div className='nombreCategoria'>
                     <h5>{item.nombre.toUpperCase()}<p className='precioCategoria'>${item.precio}</p></h5>
                   </div>

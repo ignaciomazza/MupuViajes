@@ -4,7 +4,6 @@ import { collection, getDocs } from 'firebase/firestore';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-
 const Categorias = () => {
 
     const [cat, setCat] = useState([]);
@@ -31,7 +30,6 @@ const Categorias = () => {
         .then((resultado) => {
           setCat(resultado)
         })
-        .catch((err) => console.log(err))
     
       return () => {
           
@@ -54,9 +52,9 @@ const Categorias = () => {
           </div>
           <div className='containerLinkCategoria'>
             {cat.map((item, index) => (
-              <Link className='linkCategoria' to={`/category/${item.categoria}/destination/all/tidy/mayor`}>
+              <Link key={index.toString()} className='linkCategoria' to={`/category/${item.categoria}/destination/all/tidy/mayor`}>
                 <div className='containerCategoria' >
-                  <img src={item.img} alt=""/>
+                  <img src={item.img} alt="Categoria"/>
                   <div className='nombreCategoria'>
                     <h5>{item.nombre.toUpperCase()}</h5>
                   </div>

@@ -8,7 +8,7 @@ const NavBar = (props) => {
   const [buscador, setBuscador] = useState("");
   const navigate = useNavigate();
 
-  const {logo, menu} = props;
+  const {logo} = props;
 
   const [estado, setEstado] = useState(false);
   const [searchResponsive, setSearchResponsive] = useState(false);
